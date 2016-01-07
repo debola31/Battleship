@@ -4,9 +4,11 @@ board = []
 ship_row =[]
 ship_col = []
 ship_status = [False,False]
+limit = 5
+dimension = 5
 
-for x in range(5):
-    board.append(["O"] * 5)
+for x in range(dimension):
+    board.append(["O"] * dimension)
 
 def print_board(board):
     for row in board:
@@ -26,15 +28,9 @@ for i in range(2):
     ship_col.append(random_col(board))
 
 if ship_row[0] == ship_row[1] and ship_col[0] == ship_col[1]:
-    ship_row[1] = random.choice(range(0,ship_row[0]) + range(ship_row[0]+ 1,5))
-    ship_col[1] = random.choice(range(0,ship_col[0]) + range(ship_col[0]+ 1,5))
-
-
-for i in range(2):
-    print (ship_row[i])
-    print (ship_col[i])
+    ship_row[1] = random.choice(range(0,ship_row[0]) + range(ship_row[0]+ 1,dimension))
+    ship_col[1] = random.choice(range(0,ship_col[0]) + range(ship_col[0]+ 1,dimension))
     
-limit = 5
 
 for turn in range(limit):
     print ('Turn', turn + 1)
@@ -56,7 +52,7 @@ for turn in range(limit):
             if ship_status[0] == True and ship_status[1] == True:
                 print ('Game Won')
                 break
-        elif guess_row not in range(5) or guess_col not in range(5):
+        elif guess_row not in range(dimension) or guess_col not in range(dimension):
             print ("Oops, that's not even in the ocean.")
             if turn == limit - 1:
                  print ('Game Over')
@@ -81,7 +77,7 @@ for turn in range(limit):
             if ship_status[0] == True and ship_status[1] == True:
                 print ('Game Won')
                 break
-        elif guess_row not in range(5) or guess_col not in range(5):
+        elif guess_row not in range(dimension) or guess_col not in range(dimension):
             print ("Oops, that's not even in the ocean.")
             if turn == limit - 1:
                  print ('Game Over')
@@ -106,7 +102,7 @@ for turn in range(limit):
             if ship_status[0] == True and ship_status[1] == True:
                 print ('Game Won')
                 break
-        elif guess_row not in range(5) or guess_col not in range(5):
+        elif guess_row not in range(dimension) or guess_col not in range(dimension):
             print ("Oops, that's not even in the ocean.")
             if turn == limit - 1:
                  print ('Game Over')
